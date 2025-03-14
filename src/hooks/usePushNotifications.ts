@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { VITE_API_URL } from "@/util/apiRoute";
 import useNotificationStore from "@/stores/useNotificationStores";
 import useActivateNotification from "./useActivateNotification";
 import { toast } from "sonner";
+import { axiosInstance } from "@/util/axios";
 
 export const usePushNotifications = () => {
   const [subscription, setSubscription] = useState<PushSubscription | null>(
@@ -83,7 +83,7 @@ export const usePushNotifications = () => {
       setLoading(true);
 
       // Get public VAPID key from server
-      const vapidResponse = await axios.get(
+      const vapidResponse = await axiosInstance.get(
         `${VITE_API_URL}/push-notifications/vapid-public-key`
       );
       const vapidPublicKey = vapidResponse.data.publicKey;

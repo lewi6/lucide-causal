@@ -1,6 +1,6 @@
 import { VITE_API_URL } from "@/util/apiRoute";
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import { axiosInstance } from "@/util/axios";
 import { APIError } from "@/lib/utils";
 
 const useActivateNotification = () => {
@@ -13,7 +13,7 @@ const useActivateNotification = () => {
 export default useActivateNotification;
 
 const activateNotification = async (payload: NotificationPayload) => {
-  const response = await axios.post(
+  const response = await axiosInstance.post(
     `${VITE_API_URL}/users/activate-notification`,
     payload
   );

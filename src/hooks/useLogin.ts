@@ -1,6 +1,6 @@
 import { VITE_API_URL } from "@/util/apiRoute";
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import { axiosInstance } from "@/util/axios";
 import { APIError } from "@/lib/utils";
 
 const useLogin = () => {
@@ -23,7 +23,7 @@ const login = async ({
   username: string;
   password: string;
 }) => {
-  const response = await axios.post(`${VITE_API_URL}/users/login`, {
+  const response = await axiosInstance.post(`${VITE_API_URL}/users/login`, {
     name: username,
     password,
   });

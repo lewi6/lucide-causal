@@ -1,6 +1,6 @@
 import { VITE_API_URL } from "@/util/apiRoute";
+import { axiosInstance } from "@/util/axios";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 
 const useWhoAmi = () => {
   return useQuery({
@@ -12,7 +12,7 @@ const useWhoAmi = () => {
 export default useWhoAmi;
 
 const whomai = async () => {
-  const response = await axios.post(`${VITE_API_URL}/users/profile`, {
+  const response = await axiosInstance.post(`${VITE_API_URL}/users/profile`, {
     session_id: localStorage.getItem("session_id") as string,
   });
   return response.data as typeof DLoginResponse;

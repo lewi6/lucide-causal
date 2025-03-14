@@ -14,15 +14,18 @@ export default useSendNotification;
 const sendNotification = async ({
   userId,
   message,
+  fromName,
 }: {
   userId: string;
   message: string;
+  fromName: string;
 }) => {
   const response = await axiosInstance.post(
     `${VITE_API_URL}/push-notifications/send`,
     {
       userId,
       message,
+      fromId: fromName,
     }
   );
   return response.data;

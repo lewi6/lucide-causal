@@ -127,7 +127,12 @@ function UserList() {
                       )}
                     </td>
                     <td className="px-6 py-4 text-right">
-                      {user.subscribed && <Message user={user} />}
+                      {user.subscribed && (
+                        <Message
+                          user={user}
+                          myName={userInfo?.name as string}
+                        />
+                      )}
                     </td>
                   </tr>
                 ))}

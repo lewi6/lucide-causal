@@ -6,7 +6,7 @@ import { MessageCircle } from "lucide-react";
 import { Input } from "./ui/input";
 import { useState } from "react";
 
-const Message = ({ user }: { user: User }) => {
+const Message = ({ user, myName }: { user: User; myName: string }) => {
   const { mutate: sendNotification, isPending: isSendingNotification } =
     useSendNotification();
 
@@ -17,6 +17,7 @@ const Message = ({ user }: { user: User }) => {
       {
         userId: String(user.id),
         message: message,
+        fromName: myName,
       },
       {
         onSuccess: () => {

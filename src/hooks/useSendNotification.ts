@@ -1,6 +1,6 @@
 import { VITE_API_URL } from "@/util/apiRoute";
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import { axiosInstance } from "@/util/axios";
 
 const useSendNotification = () => {
   return useMutation({
@@ -18,9 +18,12 @@ const sendNotification = async ({
   userId: string;
   message: string;
 }) => {
-  const response = await axios.post(`${VITE_API_URL}/push-notifications/send`, {
-    userId,
-    message,
-  });
+  const response = await axiosInstance.post(
+    `${VITE_API_URL}/push-notifications/send`,
+    {
+      userId,
+      message,
+    }
+  );
   return response.data;
 };

@@ -1,8 +1,8 @@
 import { VITE_API_URL } from "@/util/apiRoute";
-import axios from "axios";
+import { axiosInstance } from "@/util/axios";
 
 export const getAllUsers = async (): Promise<User[]> => {
-  const response = await axios.get(`${VITE_API_URL}/users/clients`);
+  const response = await axiosInstance.get(`${VITE_API_URL}/users/clients`);
   return response.data;
 };
 
